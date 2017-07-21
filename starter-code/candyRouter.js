@@ -1,17 +1,65 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-router = express.Router();
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
 
-var candies;
+const candies = [
+	{
+		"id": 1,
+		"name": "ChewingGum",
+		"color": "Red"
+	},
+	{
+		"id": 2,
+		"name": "Pez",
+		"color": "Green"
+	},
+	{
+		"id": 3,
+		"name": "Marshmallow",
+		"color": "pink"
+	},
+	{
+		"id": 4,
+		"name": "Candy Stick",
+		"color": "blue"
+	}
+];
 
-//What would need to go into candies
-//in order to pass our first test?
-
+//PASSED
 router.get('/', function(req,res) {
-	// What would go here? 
-	// Hint: we want all candies in JSON format
+	res.send(candies);
 });
 
-// Fill out the rest of the routes here
+//PASSED
+router.get('/:id', function(req,res) {
+	res.send(candies[req.params.id - 1]);
+});
+
+//PASSED
+router.post('/', function(req,res) {
+	const newCandy = req.body;
+	candies.push(newCandy);
+	res.send(newCandy);
+});
+
+//PASSED
+router.put('/:id', function(req,res) {
+	const thisCandy = (candies[req.params.id - 1]);
+	console.log(thisCandy.name);
+	console.log(req.body.name);
+	thisCandy.name=req.body.name;
+	thisCandy.color=req.body.color;
+	res.send(thisCandy);
+});
+
+//PASSED
+router.delete('/:id', function(req,res) {
+	const targetCandyIndex = req.params.id - 1;
+	candies.splice(targetCandyIndex, 1, null);
+	res.send("Deleted");
+});
+
+
+
 
 module.exports = router;
