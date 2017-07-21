@@ -54,7 +54,7 @@ router.put('/:id', function(req,res) {
 router.delete('/:id', function(req,res) {
 	const targetCandyIndex = req.params.id - 1;
 	candies.splice(targetCandyIndex, 1, null);
-	res.send("You went full Dalek on that piece of candy!");
+	res.send("Candy Terminated");
 });
 
 
