@@ -5,7 +5,7 @@ const router = express.Router();
 const candies = [
 	{
 		"id": 1,
-		"name": "ChewingGum",
+		"name": "Chewing Gum",
 		"color": "Red"
 	},
 	{
