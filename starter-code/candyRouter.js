@@ -45,8 +45,6 @@ router.post('/', function(req,res) {
 //PASSED
 router.put('/:id', function(req,res) {
 	const thisCandy = (candies[req.params.id - 1]);
-	console.log(thisCandy.name);
-	console.log(req.body.name);
 	thisCandy.name=req.body.name;
 	thisCandy.color=req.body.color;
 	res.send(thisCandy);
@@ -56,7 +54,7 @@ router.put('/:id', function(req,res) {
 router.delete('/:id', function(req,res) {
 	const targetCandyIndex = req.params.id - 1;
 	candies.splice(targetCandyIndex, 1, null);
-	res.send("Deleted");
+	res.send("You went full Dalek on that piece of candy!");
 });
 
 
